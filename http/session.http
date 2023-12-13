@@ -1,0 +1,10 @@
+POST http://stock.com/api/v1/session HTTP/1.1
+# Authorization: Bearer {{ authToken_dev }}
+content-type: application/json
+
+{
+  "session": {
+    "email": "test@gmail.com",
+    "password": "password"
+  }
+}

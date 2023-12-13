@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  ticker: MyString
+  cp: 1.5
+  count: 1
+  bought_time: 2023-12-10
+
+two:
+  name: MyString
+  ticker: MyString
+  cp: 1.5
+  count: 1
+  bought_time: 2023-12-10

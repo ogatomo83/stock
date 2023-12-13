@@ -1,0 +1,13 @@
+POST http://stock.com/api/v1/stocks HTTP/1.1
+Authorization: Bearer yJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiMDI4ZmQ3YzUtNjE1Zi00ODAwLTliZWItNmNiZjhjMjY1ZTM5In0.VzyHvuuU6TpMcAduqJAJs2FMAG3U2O9q_y_1qYg7p1M
+content-type: application/json
+
+{
+  "stock": {
+    "name": "password",
+    "ticker": "password",
+    "cp": 0.0,
+    "count": 6,
+    "bought_date": "2023/12/05"
+  }
+}
