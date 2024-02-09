@@ -1,8 +1,8 @@
 import { User } from "./types";
 
-export const signup = async (user: User) => {
+export const login = async (user: User) => {
   try {
-    const response = await fetch(`http://stock.com/api/v1/users`, {
+    const response = await fetch(`http://stock.com/api/v1/sessions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -13,7 +13,7 @@ export const signup = async (user: User) => {
     console.log("response", response);
 
     if (!response.ok) {
-      throw new Error("Signup failed");
+      throw new Error("Login failed");
     }
 
     return await response.json();
