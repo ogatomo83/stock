@@ -32,6 +32,7 @@ services:
       - "3000:3000"
     depends_on:
       - mysql
+    command: /bin/bash -c "rails s -b 0.0.0.0"
 
   web:
     build:
@@ -44,6 +45,9 @@ services:
       - "8080:8080"
     depends_on:
       - api
+    command: /bin/bash -c "WATCHPACK_POLLING=true yarn dev"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
 
   nginx:
     image: nginx:latest

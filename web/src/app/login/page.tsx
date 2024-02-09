@@ -1,16 +1,14 @@
 "use client";
 import React, { useState } from "react";
 import { User } from "./types";
-import { signup } from "./api";
+import { login } from "./api";
 
 import styles from "./page.module.scss";
 
 export default function Signup() {
   const [user, setUser] = useState<User>({
-    name: "",
     email: "",
     password: "",
-    password_confirmation: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -21,30 +19,24 @@ export default function Signup() {
   };
 
   const handleSubmit = async () => {
-    console.log("Signup user", user);
+    console.log("Login user", user);
     try {
-      const response = await signup(user);
-      console.log("Signup successful", response);
+      const response = await login(user);
+      if (response.user.token) {
+        sessionStorage.setItem("token", response.user.token);
+      }
+      console.log("Login successful", response);
       // 成功した場合の処理をここに記述
     } catch (error) {
-      console.error("Signup error", error);
+      console.error("Login error", error);
       // エラーハンドリングをここに記述
     }
   };
 
   return (
     <main className={styles.siginup}>
-      <h1>新規登録</h1>
+      <h1>ログイン</h1>
       <div>
-        <label htmlFor="name">お名前</label>
-        <input
-          id="name"
-          type="text"
-          name="name"
-          placeholder="名前を入力してください"
-          value={user.name}
-          onChange={handleChange}
-        />
         <label htmlFor="email">メールアドレス</label>
         <input
           id="email"
@@ -61,15 +53,6 @@ export default function Signup() {
           name="password"
           placeholder="パスワードを入力してください"
           value={user.password}
-          onChange={handleChange}
-        />
-        <label htmlFor="password_confirmation">パスワード（確認用）</label>
-        <input
-          id="password_confirmation"
-          type="password"
-          name="password_confirmation"
-          placeholder="パスワードを再入力してください"
-          value={user.password_confirmation}
           onChange={handleChange}
         />
         <button onClick={() => handleSubmit()}>Submit</button>

@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_10_021052) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_10_021053) do
+  create_table "news", id: { type: :string, limit: 36 }, charset: "utf8mb3", force: :cascade do |t|
+    t.string "url"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "stocks", id: { type: :string, limit: 36 }, charset: "utf8mb3", force: :cascade do |t|
     t.string "user_id"
     t.string "name"
